@@ -24,7 +24,7 @@ public class DbHandler extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+    public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_NAME + " TEXT,"
@@ -34,6 +34,13 @@ public class DbHandler extends SQLiteOpenHelper {
         db.execSQL(sql);
     }
 
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int newVersion, int oldVersion) {
+        String sql = "DROP TABLE IF EXISTS " + TABLE_NAME;
+
+        db.execSQL(sql);
+        onCreate(db);
+    }
     public void insertStudent(Student student) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -46,17 +53,9 @@ public class DbHandler extends SQLiteOpenHelper {
         db.close();
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int newVersion, int oldVersion) {
-        String sql = "DROP TABLE IF EXISTS " + TABLE_NAME;
-
-        db.execSQL(sql);
-        onCreate(db);
-    }
-
     public List<Student> selectAllStudents() {
         List<Student> students = new ArrayList<>();
-
+System.out.println("adding");
         String sql = "SELECT * FROM " + TABLE_NAME;
 
         SQLiteDatabase db = this.getWritableDatabase();
