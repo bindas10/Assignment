@@ -20,7 +20,7 @@ public class MainActivity3 extends AppCompatActivity {
         TextView sabaqView = findViewById(R.id.editTextTextPersonName4);
         TextView sabaqiView = findViewById(R.id.editTextTextPersonName5);
         TextView manzalView = findViewById(R.id.editTextTextPersonName6);
-        TextView rollNoView = findViewById(R.id.textView);
+        TextView rollNoView = findViewById(R.id.editTextTextPersonName0);
         insertStudentTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,6 +30,7 @@ public class MainActivity3 extends AppCompatActivity {
                 String manzal = manzalView.getText().toString();
                 String currentDate = db.getCurrentDate();
                 Task task = new Task(rollNo, sabaq, sabaqi, manzal, currentDate);
+                System.out.println("TASK");
                 db.insertTask(task);
 
                 Intent intent = new Intent(MainActivity3.this, MainActivity.class);

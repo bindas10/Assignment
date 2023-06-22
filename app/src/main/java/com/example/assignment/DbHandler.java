@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class DbHandler extends SQLiteOpenHelper {
         String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_NAME + " TEXT,"
-                + COLUMN_ROLLNO + " TEXT,"
+                + COLUMN_ROLLNO + " TEXT UNIQUE,"
                 + COLUMN_AGE + " INTEGER"
                 + ")";
         db.execSQL(sql);
@@ -41,7 +42,7 @@ public class DbHandler extends SQLiteOpenHelper {
         db.execSQL(sql);
         onCreate(db);
     }
-    public void insertStudent(Student student) {
+    public void insertStudent(Student student)throws SQLiteConstraintException {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();

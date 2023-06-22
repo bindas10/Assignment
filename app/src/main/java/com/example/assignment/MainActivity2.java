@@ -33,10 +33,21 @@ public class MainActivity2 extends AppCompatActivity {
                 int ageValue = 0;
                 rollNoValue = rollNo.getText().toString();
                 nameValue = name.getText().toString();
+                try {
 
-                ageValue = Integer.parseInt(age.getText().toString());
-                Student student = new Student(nameValue, ageValue, rollNoValue);
-                db.insertStudent(student);
+                    ageValue = Integer.parseInt(age.getText().toString());
+                    Student student = new Student(nameValue, ageValue, rollNoValue);
+                    db.insertStudent(student);
+                }
+                catch (SQLiteConstraintException exc){
+                    Toast.makeText(MainActivity2.this, "Roll no already taken", Toast.LENGTH_LONG).show();
+                }
+                catch (Exception e){
+                    Toast.makeText(MainActivity2.this, "Enter right age", Toast.LENGTH_LONG).show();
+                }
+                Toast.makeText(MainActivity2.this, "Student created successfully", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                startActivity(intent);
             }
 
         });

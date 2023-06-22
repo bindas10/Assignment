@@ -13,6 +13,9 @@ public class MainActivity extends AppCompatActivity {
     Button btn1;
     Button btn2;
 
+    Button btn3;
+
+    Button btn4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         btn=findViewById(R.id.button2);
         btn1=findViewById(R.id.button3);
         btn2=findViewById(R.id.button4);
+        btn3=findViewById(R.id.button6);
+        btn4=findViewById(R.id.button5);
+
 
         String url = "https://github.com/hamzariaz503/Assignment-lms";
         Intent i= new Intent(Intent.ACTION_VIEW);
@@ -40,7 +46,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(moveActivity);
             }
         });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent moveActivity = new Intent(MainActivity.this, MainActivity3.class);
+                 startActivity(moveActivity);
+            }
 
+        });
+        btn4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent moveActivity = new Intent(MainActivity.this, show_task.class);
+                startActivity(moveActivity);
+            }
+
+        });
         btn.setOnClickListener(new View.OnClickListener()
         {
             @Override

@@ -51,9 +51,10 @@ public class TaskDBHelper extends SQLiteOpenHelper {
 
     public void insertTask(Task task){
         SQLiteDatabase db = this.getWritableDatabase();
-
+        System.out.println("started");
         String currentDate = getCurrentDate();
-        if (!isTaskAlreadyAdded(task.getRollNo(), currentDate)){
+        //if (!isTaskAlreadyAdded(task.getRollNo(), currentDate)){
+            System.out.println("NExt Start");
             ContentValues values = new ContentValues();
 
 
@@ -66,7 +67,10 @@ public class TaskDBHelper extends SQLiteOpenHelper {
 
             db.insert(TABLE_NAME, null, values);
             db.close();
-        }
+       // }
+       // else{
+           // System.out.println("NOW see");
+        //}
     }
 
     public List<Task> selectAllTasks(String rollNo){
@@ -84,7 +88,10 @@ public class TaskDBHelper extends SQLiteOpenHelper {
                 @SuppressLint("Range") String manzal = cursor.getString(cursor.getColumnIndex(COLUMN_MANZIL));
                 @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex(COLUMN_DATE));
                 @SuppressLint("Range")  String roll = cursor.getString(cursor.getColumnIndex(COLUMN_ROLLNO));
-                tasks.add(new Task(roll, sabaq, sabaqi, manzal, date));
+                Task a = new Task(roll, sabaq, sabaqi, manzal, date);
+                tasks.add(a);
+                System.out.println("Hello");
+                System.out.println(a);
             } while (cursor.moveToNext());
         }
 

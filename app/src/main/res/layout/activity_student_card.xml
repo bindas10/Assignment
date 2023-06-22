@@ -4,21 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/student_card_layout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="170sp"
     android:layout_marginLeft="5dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="5dp"
     android:layout_marginBottom="10dp"
     android:background="#335D80"
-    android:backgroundTint="#219EAE"
+    android:backgroundTint="#27DF40"
     android:padding="12dp">
 
     <TextView
         android:id="@+id/student_card_name_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="131dp"
+        android:layout_height="24dp"
+        android:fontFamily="sans-serif-black"
         android:text="Student NAME"
-        android:textColor="#000000"
+        android:textColor="#2712E6"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,22 +29,26 @@
         android:id="@+id/student_card_rollno_field"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="32dp"
         android:text="Student ROLLNO"
         android:textColor="@color/purple_700"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/student_card_name_field" />
 
     <TextView
         android:id="@+id/student_card_age_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_width="124dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="20dp"
         android:text="Age"
-        android:textColor="#D32F2F"
-        app:layout_constraintStart_toEndOf="@+id/student_card_name_field"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="#F42703"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/student_card_rollno_field" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
