@@ -44,7 +44,13 @@ public class DbHandler extends SQLiteOpenHelper {
     }
     public void insertStudent(Student student)throws SQLiteConstraintException {
         SQLiteDatabase db = this.getWritableDatabase();
-
+        String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COLUMN_ROLLNO + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{student.getRollno()});
+        if (cursor.getCount() > 0) {
+            cursor.close();
+            db.close();
+            throw new SQLiteConstraintException("Student with roll number " + student.getRollno() + " already exists");
+        }
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, student.getName());
         values.put(COLUMN_ROLLNO, student.getRollno());
